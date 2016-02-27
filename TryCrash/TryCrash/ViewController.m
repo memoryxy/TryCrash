@@ -8,11 +8,6 @@
 
 #import "ViewController.h"
 
-/*
- * 人造异常、崩溃，越多越好，尽量去找些crash的
- * 循环引用的话，测试被循环引用的对象的dealloc 是否调用，如果没调用，就通过
- */
-
 @interface ViewController ()
 
 @property (nonatomic, copy) NSArray *all;
@@ -25,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Try to crash";
+    /*
+     * 人造异常、崩溃，越多越好，请尽量去找些crash的并增加上去
+     * 循环引用的话，测试被循环引用的对象的dealloc 是否调用，如果没调用，就通过
+     */
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"cell"];
     NSArray *exception = @[@"NSArray", @"NSMutableArray", @"NSDictionary", @"NSMutableDictionary", @"Not found selector"];
     NSArray *cycleRetain = @[@"timer", @"KVO", @"block"];
