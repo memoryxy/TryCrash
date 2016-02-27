@@ -56,7 +56,6 @@
 				6C4CC9E21C812F1000D25A8D /* AppDelegate.m */,
 				6C4CC9E41C812F1000D25A8D /* ViewController.h */,
 				6C4CC9E51C812F1000D25A8D /* ViewController.m */,
-				6C4CC9EF1C812F1000D25A8D /* Info.plist */,
 				6C4CC9DE1C812F1000D25A8D /* Supporting Files */,
 			);
 			path = TryCrash;
@@ -65,6 +64,7 @@
 		6C4CC9DE1C812F1000D25A8D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6C4CC9EF1C812F1000D25A8D /* Info.plist */,
 				6C4CC9DF1C812F1000D25A8D /* main.m */,
 			);
 			name = "Supporting Files";
