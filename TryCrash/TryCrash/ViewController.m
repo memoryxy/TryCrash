@@ -8,6 +8,11 @@
 
 #import "ViewController.h"
 
+/*
+ * 人造异常、崩溃，越多越好，尽量去找些crash的
+ * 循环引用的话，测试被循环引用的对象的dealloc 是否调用，如果没调用，就通过
+ */
+
 @interface ViewController ()
 
 @property (nonatomic, copy) NSArray *all;
@@ -30,6 +35,36 @@
     self.sectionHeaders = @[@"异常", @"循环引用", @"线程异常", @"内存崩溃"];
 }
 
+#pragma mark - All tests
+
+- (void)testArray {
+    NSArray *array = [NSArray new];
+    [array objectAtIndex:1];
+
+    // 可以这么解决
+//    @try {
+//        NSArray *array = [NSArray new];
+//        [array objectAtIndex:1];
+//    }
+//    @catch (NSException *exception) {
+//        
+//    }
+//    @finally {
+//        
+//    }
+    
+//    // 也可以
+//    if (array.count > 1) {
+//        [array objectAtIndex:1];
+//    }
+    
+    // 还可以 写个类别，调用安全的类别
+}
+
+- (void)testNoSelector {
+    
+}
+
 #pragma mark - delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -39,7 +74,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSArray *aSection = self.all[indexPath.section];
+    NSString *cell = aSection[indexPath.row];
     
+    // TODO: NSArray为例子
+    if ([cell isEqualToString:@"NSArray"]) {
+        [self testArray];
+    } else if ([cell isEqualToString:@"Not found selector"]) {
+        [self testNoSelector];
+    }
 }
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
