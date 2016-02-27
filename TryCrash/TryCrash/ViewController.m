@@ -25,7 +25,7 @@
      * 循环引用的话，测试被循环引用的对象的dealloc 是否调用，如果没调用，就循环引用成功
      */
     [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"cell"];
-    NSArray *exception = @[@"NSArray", @"NSMutableArray", @"NSDictionary", @"NSMutableDictionary", @"Not found selector"];
+    NSArray *exception = @[@"NSArray", @"NSMutableArray", @"NSDictionary", @"NSMutableDictionary", @"Not found selector", @"除零"];
     NSArray *cycleRetain = @[@"timer", @"KVO", @"block"];
     NSArray *threadException = @[@"死锁", @"多线程同时读写"];
     NSArray *badAccess = @[@"野指针", @"访问常量区"];
